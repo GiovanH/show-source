@@ -5,38 +5,41 @@ import pytest
 import pelican
 
 
-def _site(output_path, conf_filename):
+def _site(output_path, extra_settings=[]):
     datadir = pathlib.Path(__file__).parent / "data"
     args = [
         datadir / "content",
         "-o",
         output_path,
         "-s",
-        datadir / conf_filename,
+        datadir / "pelicanconf.py",
         "--relative-urls",
-        "--debug"
     ]
+    for opt in extra_settings:
+        args += ["-e", opt]
     pelican.main([str(a) for a in args])
 
 
 @pytest.fixture(scope="module")
 def site_autoext_true(tmp_path_factory):
     output = tmp_path_factory.getbasetemp()
-    _site(output, "pelicanconf_autoext_true.py")
+    _site(output, ["SHOW_SOURCE_AUTOEXT=true"])
     yield output
 
 
 @pytest.fixture(scope="module")
 def site_autoext_false(tmp_path_factory):
     output = tmp_path_factory.getbasetemp()
-    _site(output, "pelicanconf_autoext_false.py")
+    _site(output, ["SHOW_SOURCE_AUTOEXT=false"])
     yield output
+
 
 @pytest.fixture(scope="module")
 def site_autoext_default(tmp_path_factory):
     output = tmp_path_factory.getbasetemp()
-    _site(output, "pelicanconf.py")
+    _site(output)
     yield output
+
 
 def _test_show_source(site, src_extension):
     tag = "esse-quam-laboriosam-at-accusantium"
