@@ -139,15 +139,15 @@ The testing is done using pytest (from the clone/checkout directory).
 
 Linux/Mac:
 ```shell
-PYTHONPATH=. py.test -vvs pelican/plugins/test/test_show_source.py
+PYTHONPATH=. inv tests
 ```
 Windows:
 ```dos
 SET PYTHONPATH=%CD%
-py.test -vvs pelican\plugins\test\test_show_source.py
+inv tests
 ```
 
-> **_NOTE:_** If your python environment has installed pelican-show-source you need to uninstall it first.
+> **_NOTE:_** If your python environment has pelican-show-source installed, you will need to uninstall it first.
 
 License
 -------
