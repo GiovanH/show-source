@@ -139,12 +139,12 @@ The testing is done using pytest (from the clone/checkout directory).
 
 Linux/Mac:
 ```shell
-PYTHONPATH=. inv tests
+PYTHONPATH=. invoke tests
 ```
 Windows:
 ```dos
 SET PYTHONPATH=%CD%
-inv tests
+invoke tests
 ```
 
 > **_NOTE:_** If your python environment has pelican-show-source installed, you will need to uninstall it first.
