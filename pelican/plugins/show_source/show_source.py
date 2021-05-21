@@ -7,7 +7,7 @@ from pelican.utils import pelican_open
 
 logger = logging.getLogger(__name__)
 source_files = []
-TYPES_TO_PROCESS = ["articles", "pages", "drafts"]
+TYPES_TO_PROCESS = ["articles", "pages", "drafts", "hidden_pages", "hidden_articles"]
 
 
 def link_source_files(generator):
